@@ -1,0 +1,63 @@
+criterion:
+  name: ce
+  ortho_loss_weight: 0
+
+optimizer:
+  name: radam
+  lr: 0.002
+  weight_decay: 0.0005
+
+scheduler:
+  name: cosine
+  lr_gamma: 0.99
+  lr_min: 0
+
+run:
+  experiment: "cifar10_resnet18_default"
+  n_epochs: 200
+  batch_size: 32
+  use_cuda: 1
+  gpu_id: 0
+  deterministic: 1
+  random_state: 42
+  log_interval: 200
+  train_noise: 0
+
+mlg:
+  projection_alg: null
+  kd: False
+  base_in: 0
+  base_out: 0
+  basis_bit: 16
+  coeff_in_bit: 16
+  coeff_out_bit: 16
+
+quantize:
+  quant_ratio_basis: 1
+  quant_ratio_coeff_in: 1
+  quant_ratio_coeff_out: 1
+  quant_ratio_in: 1
+
+checkpoint:
+  save_best_model_k: 1
+  checkpoint_dir: "cifar10/resnet18/default"
+  model_comment: ""
+  resume: 0
+  restore_checkpoint: ""
+  teacher_checkpoint: ""
+  no_linear: 0
+
+model:
+  name: "ResNet18"
+  weight_bit: 8
+  input_bit: 32
+
+teacher:
+  name: "ResNet18"
+  checkpoint: ""
+  weight_bit: 32
+  input_bit: 32
+
+debug:
+  verbose: 1
+
