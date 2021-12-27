@@ -40,7 +40,7 @@ On CIFAR-10/100 and ResNet-18/DenseNet-121, we surpass prior low-rank methods wi
 * Pretrain teacher model.\
 `> python3 train.py configs/cifar10/resnet18/train/pretrain.yml`
 
-* Train MLG-based student model with L2-norm-based projection, knowledge distillation, multi-level orthonormality regularization, (Ci, Co, qb, qu, qv) = (2, 44, 3, 6, 3).\
+* Train MLG-based student model with L2-norm-based projection, knowledge distillation, multi-level orthonormality regularization, (Bi, Bo, qb, qu, qv) = (2, 44, 3, 6, 3).\
 `> python3 train.py configs/cifar10/resnet18/train/train.yml --teacher.checkpoint=path-to-teacher-ckpt --mlg.projection_alg=train --mlg.kd=1 --mlg.base_in=2 --mlg.base_out=44 --mlg.basis_bit=3 --mlg.coeff_in_bit=6 --mlg.coeff_out_bit=3 --criterion.ortho_weight_loss=0.05`
 
 * Scripts for experiments are in `./scripts`. For example, to run teacher model pretraining, you can write proper task setting in SCRIPT=`scripts/cifar10/resnet18/pretrain.py` and run\
