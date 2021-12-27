@@ -44,7 +44,6 @@ checkpoint:
   model_comment: ""
   resume: 0
   restore_checkpoint: ""
-  teacher_checkpoint: ""
   no_linear: 0
 
 model:
